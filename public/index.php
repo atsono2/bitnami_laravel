@@ -1,4 +1,10 @@
 <?php
+/**
+ *  public/index.php
+ *  全てのリクエストの入り口となるファイル
+ *  Webサーバ(Apache/Nginx)の設定により、すべてのリクエストをこのファイルへ渡しています。
+ *
+*/
 
 /**
  * Laravel - A PHP Framework For Web Artisans
@@ -35,6 +41,11 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
+/**
+ * Laravelアプリケーションのインスタンスを取得します。
+ * Laravel自身の最初のアクションは、アプリケーション／サービスコンテナのインスタンスを生成すること
+ *
+ */
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 /*

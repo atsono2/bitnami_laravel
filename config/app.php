@@ -132,6 +132,9 @@ return [
     | request to your application. Feel free to add your own services to
     | this array to grant expanded functionality to your applications.
     |
+    | 下記のサービスプロバイダは、アプリケーションへのリクエストに応じて自動でロードされる。
+    |
+    |
     */
 
     'providers' => [
@@ -168,6 +171,8 @@ return [
 
         /*
          * Application Service Providers...
+         *
+         * app/Providers 配下のデフォルトサービスプロバイダ
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
