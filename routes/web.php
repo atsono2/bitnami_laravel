@@ -16,3 +16,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// interface AnimalInterface {
+//     public function cry();
+// }
+
+// class Dog implements AnimalInterface {
+//     public function cry() {
+//         return "bow-wow";
+//     }
+// }
+
+// class Cat implements AnimalInterface {
+//     public function cry() {
+//         return "neow";
+//     }
+// }
+
+// $this->app->bind('onomatopoeia', 'Dog');
+
+// Route::get('/cry', function() {
+//     $onomato = $this->app->make('onomatopoeia');
+//     return $onomato->cry();
+// });
