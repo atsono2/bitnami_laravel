@@ -30,7 +30,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // id パラメータは常に整数でなければならない
+        Route::pattern('id', '[0-9]+');
 
         parent::boot();
     }
