@@ -10,6 +10,7 @@ class Kernel extends HttpKernel
      * The application's global HTTP middleware stack.
      *
      * These middleware are run during every request to your application.
+     * 全てのリクエストで実行される
      *
      * @var array
      */
@@ -48,6 +49,8 @@ class Kernel extends HttpKernel
      * The application's route middleware.
      *
      * These middleware may be assigned to groups or used individually.
+     * 特定のルートに対して実行するミドルウェアを指定する
+     * web.phpでmiddlewareメソッドでキーを指定する
      *
      * @var array
      */

@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// ルートグループにミドルウェアグループを指定
+Route::group(['middleware' => ['web']], function() {
+    Route::get('/foo', function() {
+        return 'foo';
+    });
+    Route::get('bar', function() {
+        return 'bar';
+    });
+});
+
