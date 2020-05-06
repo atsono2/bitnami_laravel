@@ -18,6 +18,8 @@ return [
     |
     */
 
+    // デフォルトのセッションドライバはfile
+    // storage/framework/sessionsに保存される
     'driver' => env('SESSION_DRIVER', 'file'),
 
     /*

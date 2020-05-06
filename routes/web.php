@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('home', function () {
+    $array = [];
+    // セッションから一つのデータを取得する
+    $value = session('key');
+    $array[] = $value;
+    // デフォルト値を指定する場合
+    $value = session('key', 'default');
+    $array[] = $value;
+    // セッションへ一つのデータを保存する
+    session(['key' => 'value']);
+    return session();
+});
+
+Route::get('home2', 'UserController@home2');
