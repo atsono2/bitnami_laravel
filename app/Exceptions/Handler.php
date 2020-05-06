@@ -3,17 +3,48 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use App\Exceptions\SampleException;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
     /**
+     * ログのデフォルトコンテキスト変数の取得
+     *
+     * @return array
+     */
+    protected function context()
+    {
+        // parent: vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php
+        return array_merge(parent::context(), [
+            'foo' => 'bar',
+        ]);
+    }
+    /** vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php */
+    // protected function context()
+    // {
+    //     try {
+    //         return array_filter([
+    //             'userId' => Auth::id(),
+    //             // 'email' => optional(Auth::user())->email,
+    //         ]);
+    //     } catch (Throwable $e) {
+    //         return [];
+    //     }
+    // }
+
+    /**
      * A list of the exception types that are not reported.
      *
+     * ログしたくない例外を設定する
      * @var array
      */
     protected $dontReport = [
-        //
+        \Illuminate\Auth\AuthenticationException::class,
+        \Illuminate\Auth\Access\AuthorizationException::class,
+        \Symfony\Component\HttpKernel\Exception\HttpException::class,
+        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        \Illuminate\Validation\ValidationException::class,
     ];
 
     /**
@@ -36,6 +67,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Throwable $exception)
     {
+        if ($exception instanceof SampleException) {
+            //
+        }
+
         parent::report($exception);
     }
 
@@ -50,6 +85,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if ($exception instanceof SampleException) {
+            return response()->view('errors.custom', [], 500);
+        }
+
         return parent::render($request, $exception);
     }
 }

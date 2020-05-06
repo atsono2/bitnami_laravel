@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    abort(500, '例外です');
     return view('welcome');
 });
+
