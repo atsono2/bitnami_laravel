@@ -8,10 +8,14 @@ class VerifyCsrfToken extends Middleware
 {
     /**
      * The URIs that should be excluded from CSRF verification.
+     * CSRFバリデーションから除外するURIを設定する
      *
      * @var array
      */
     protected $except = [
         //
+        'stripe/*',
+        'http://example.com/foo/bar',
+        'http://example.com/foo/*',
     ];
 }
