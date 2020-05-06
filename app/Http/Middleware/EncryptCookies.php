@@ -9,9 +9,13 @@ class EncryptCookies extends Middleware
     /**
      * The names of the cookies that should not be encrypted.
      *
+     * 暗号化を無効にしたいcookieを追加する
+     *
      * @var array
      */
     protected $except = [
         //
+        'name',
+        'sample'
     ];
 }
