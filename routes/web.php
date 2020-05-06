@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Psr\Http\Message\ServerRequestInterface;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::any('/user', 'UserController@store')->name('user');
+
+// PSR-7リクエスト
+Route::get('/', function (ServerRequestInterface $request) {
     return view('welcome');
 });

@@ -94,6 +94,13 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                <form action="{{ route('user') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="text" name="name" value="{{ old('name') }}">
+                    <input type="checkbox" name="isactive">
+                    <input type="file" name="photo">
+                    <input type="submit">
+                </form>
             </div>
         </div>
     </body>
