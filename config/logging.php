@@ -3,6 +3,7 @@
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
+use App\Logging\CustomizeFormatter;
 
 return [
 
@@ -35,14 +36,16 @@ return [
     */
 
     'channels' => [
+        // stackチャンネルは、複数のログチャンネルを一つのログチャンネルへ集結する
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['single', 'slack'],
             'ignore_exceptions' => false,
         ],
 
         'single' => [
             'driver' => 'single',
+            'tap' => [CustomizeFormatter::class],
             'path' => storage_path('logs/laravel.log'),
             'level' => 'debug',
         ],
@@ -59,7 +62,7 @@ return [
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
             'username' => 'Laravel Log',
             'emoji' => ':boom:',
-            'level' => 'critical',
+            'level' => 'critical',// チャンネルでメッセージをログする、最低の「レベル」を定める
         ],
 
         'papertrail' => [
@@ -83,7 +86,7 @@ return [
 
         'syslog' => [
             'driver' => 'syslog',
-            'level' => 'debug',
+            'level' => 'debug',// チャンネルでメッセージをログする、最低の「レベル」を定める
         ],
 
         'errorlog' => [
