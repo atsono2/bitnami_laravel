@@ -12,6 +12,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * In addition, it is set as the URL generator's root namespace.
      *
+     * namespaceを設定しているので、ルーティングでApp\Http\Controllers以下を書けばよい
+     * Route::get('foo', 'UserController@index');
+     *
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';

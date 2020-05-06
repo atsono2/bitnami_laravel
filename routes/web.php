@@ -16,3 +16,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/profile', 'UserController@show')->name('login');
+// Route::group(['middleware' => 'auth'], function() {
+//     Route::get('/profile', 'UserController@show')->name('login');
+// });
+
+Route::resources([
+    'photos' => 'PhotoController',
+    'posts' => 'PostController',
+]);
+
+Route::apiResource('photos/api', 'API\PhotoController');
+
+// showメソッドを呼ぶ
+Route::resource('users', 'AdminUserController')->parameters([
+    'users' => 'admin_user',
+]);
