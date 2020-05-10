@@ -17,6 +17,6 @@ ini_set('opcache.enable_cli', 0);
 // ini_set('opcache.revalidate_freq', 0);
 
 Route::get('/', function () {
-    // return view('welcome');
-    return 'hello';
+    return view('welcome');
+    // return 'hello';
 });

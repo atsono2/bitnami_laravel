@@ -4,6 +4,8 @@ ini_set('opcache.enable_cli', 0);
 ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+{{-- 圧縮ファイルを読み込み --}}
+<script src="{{mix('js/all.js')}}"></script>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
