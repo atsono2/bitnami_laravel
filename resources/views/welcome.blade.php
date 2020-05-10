@@ -1,3 +1,7 @@
+<?php
+ini_set('opcache.enable', 0);
+ini_set('opcache.enable_cli', 0);
+?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
