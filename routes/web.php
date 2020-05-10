@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 ini_set('opcache.enable', 0);
 ini_set('opcache.enable_cli', 0);
-// ini_set('opcache.revalidate_freq', 0);
+ini_set('opcache.revalidate_freq', 0);
 
 Route::get('/', function () {
+    if (Auth::check()) {
+        return 'hello';
+    } else {
+        return view('welcome');
+    }
     // return view('welcome');
-    return 'hello';
+    // return 'hello';
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/profile', 'ProfileController@index');

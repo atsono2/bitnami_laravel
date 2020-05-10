@@ -19,6 +19,8 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * The path to the "home" route for your application.
      *
+     * 認証後のリダイレクトパスの設定
+     *
      * @var string
      */
     public const HOME = '/home';
