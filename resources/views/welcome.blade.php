@@ -97,7 +97,35 @@ ini_set('opcache.enable_cli', 0);
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
+                    Hello {{ $name }}
+                    Hello {!! $name !!}
                 </div>
+                <div>
+                    @json($array)
+                </div>
+                <div>
+                    {{-- ビューが存在しなくてもエラーにならない --}}
+                    @includeIf('include', ['var' => 'テストです'])
+                </div>
+                <div>
+                    @includeWhen(true, 'include', ['var' => 'includeWhenの第一引数にbool値を渡す'])
+                </div>
+                <div>
+                    @input(['type' => 'text'])
+                    @input(['type' => 'text', 'maxlength' => 1])
+                    @input(['type' => 'submit'])
+                </div>
+                <div>
+                    @inject('metrics', 'App\Services\MetricsService')
+                    メソッド呼び出し: {{ $metrics->test() }}.
+                    メソッド呼び出し: {{ $metrics->bow(['dog', 'cat']) }}.
+                </div>
+                <div>
+                    @datetime(new DateTime('now'))
+                </div>
+                {{-- <div>
+                    @each('includes.each', ['one' => 1, 'two' => 2, 'three' => 3], 'item')
+                </div> --}}
             </div>
         </div>
     </body>

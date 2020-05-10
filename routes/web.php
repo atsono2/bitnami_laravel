@@ -14,9 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 ini_set('opcache.enable', 0);
 ini_set('opcache.enable_cli', 0);
-// ini_set('opcache.revalidate_freq', 0);
+ini_set('opcache.revalidate_freq', 0);
 
 Route::get('/', function () {
-    // return view('welcome');
-    return 'hello';
+    return view('welcome');
+});
+
+Route::get('/blade', function() {
+    return view('child');
+});
+$array = [
+    'one' => 1,
+    'two' => 2,
+];
+
+Route::get('/greeting', function () {
+    return view('welcome', ['name' => 'Samantha', 'array' => [ 'one' => 1,'two' => 2,] ]);
 });
