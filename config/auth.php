@@ -42,9 +42,11 @@ return [
         ],
 
         'api' => [
+            // tokenドライバは、受信したリクエストのAPIトークンを調べ、データベース上のユーザーに結びつけたトークンと一致するか検証する
             'driver' => 'token',
             'provider' => 'users',
-            'hash' => false,
+            // APIトークンをハッシュ化するためにtrue
+            'hash' => true,
         ],
     ],
 

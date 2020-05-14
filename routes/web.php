@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,12 @@ ini_set('opcache.enable_cli', 0);
 Route::get('/', function () {
     // return view('welcome');
     return 'hello';
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
 });
