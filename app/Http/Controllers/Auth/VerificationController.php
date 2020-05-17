@@ -23,6 +23,7 @@ class VerificationController extends Controller
 
     /**
      * Where to redirect users after verification.
+     * メールアドレス確認後にリダイレクトするパスの設定
      *
      * @var string
      */
