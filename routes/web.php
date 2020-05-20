@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 
 /*
@@ -19,7 +20,20 @@ ini_set('opcache.enable_cli', 0);
 
 Route::get('/', function () {
     // return view('welcome');
-    return 'hello';
+    // return 'hello';
+    // OpenSSLとAES-256-CBCアルゴリズムを使用して暗号化
+    return encrypt(123);
+});
+
+Route::get('/encrypt', function() {
+    $encrypted = Crypt::encryptString("Hello World");
+    echo $encrypted;
+
+    echo "\n";
+
+    $decrypted = Crypt::decryptString($encrypted);
+    echo $decrypted;
+
 });
 
 Auth::routes();
