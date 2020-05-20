@@ -22,6 +22,10 @@ Route::get('/', function () {
     return 'hello';
 });
 
+Route::get('/reset', function() {
+    return view('auth.passwords.reset');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
