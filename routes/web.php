@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 /*
@@ -20,6 +21,15 @@ ini_set('opcache.enable_cli', 0);
 Route::get('/', function () {
     // return view('welcome');
     return 'hello';
+});
+
+Route::get('/hash', function() {
+    echo Hash::make(12345);
+    $pass = Hash::make('hello');
+    echo "\n";
+    echo $pass;
+    echo "\n";
+    echo Hash::check('hello', $pass);
 });
 
 Auth::routes();
