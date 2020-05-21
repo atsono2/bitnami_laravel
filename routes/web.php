@@ -22,6 +22,12 @@ Route::get('/', function () {
     return 'hello';
 });
 
+Route::get('/command', function() {
+    $exitCode = Artisan::call('sample:name', [
+        'user' => 'onodesu', '--queue' => 'default'
+    ]);
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
