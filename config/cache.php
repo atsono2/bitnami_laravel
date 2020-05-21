@@ -55,6 +55,11 @@ return [
 
         'memcached' => [
             'driver' => 'memcached',
+            [
+                'host' => '/var/run/memcached/memcached.sock',
+                'port' => 0,
+                'weight' => 100
+            ],
             'persistent_id' => env('MEMCACHED_PERSISTENT_ID'),
             'sasl' => [
                 env('MEMCACHED_USERNAME'),

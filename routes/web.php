@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,20 @@ ini_set('opcache.enable_cli', 0);
 // ini_set('opcache.revalidate_freq', 0);
 
 Route::get('/', function () {
-    // return view('welcome');
-    return 'hello';
+    // キャッシュにデータがある場合はキャッシュから取得し、なかった場合はDBから取得する
+    $value = Cache::get('user', function() {
+        // return DB::table('user')->get();
+    });
+
+    // remember:キャッシュから取得を試みて、存在しなければデータをキャッシュに追加する
+    $item = Cache::remember('user', 12, function() {
+        // return DB::table('user)->get();
+    });
+
+    // キャッシュに追加
+    Cache::put('key', 'データ');
+
+    dd($value);
 });
 
 Auth::routes();
